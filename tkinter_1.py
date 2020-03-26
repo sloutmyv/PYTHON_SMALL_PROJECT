@@ -1,6 +1,7 @@
 from tkinter import *
 from random import randint
 
+# class
 class Ball:
     def __init__(self, canvas, x1,y1,x2,y2,dx,dy):
         self.x1 = x1

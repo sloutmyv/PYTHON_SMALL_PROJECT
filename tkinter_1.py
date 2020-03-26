@@ -12,24 +12,30 @@ class Ball:
         self.dy = dy
         self.canvas = canvas
         self.ball = canvas.create_oval(self.x1,self.y1,self.x2,self.y2, fill="red")
+        self.active = True
+        self.move_active()
 
     def move_ball(self):
         self.canvas.move(self.ball,self.dx,self.dy)
         pos = self.canvas.coords(self.ball)
-        print(pos)
         if pos[3] > HEIGHT or pos[1] <=0:
             self.dy = -self.dy
         if pos[2] > WIDTH or pos[0] <=0:
             self.dx = -self.dx
-        self.canvas.after(50, self.move_ball())
+
+    def move_active(self):
+        if self.active:
+            self.move_ball()
+            self.canvas.after(5, self.move_active)
 
 
-global WIDTH
-global HEIGHT
+
+# global WIDTH
+# global HEIGHT
 WIDTH = 500
 HEIGHT = 500
 DIAM_BALLS = 20
-NB_BALLS = 1
+NB_BALLS = 10
 
 # initialize root window and canvas
 window = Tk()
@@ -49,8 +55,5 @@ for i in range(NB_BALLS):
     dx = 1
     dy = 1
     balls.append(Ball(canvas,x1,y1,x2,y2,dx,dy))
-
-for ball in balls:
-    ball.move_ball()
 
 window.mainloop()

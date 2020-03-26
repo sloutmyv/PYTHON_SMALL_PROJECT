@@ -1,3 +1,11 @@
+###############################################################################
+# Date ! 27/03/2020
+# Auteur : SYC
+# Comment : Just some balls in a windows
+###############################################################################
+
+
+
 from tkinter import *
 from random import randint
 
@@ -31,7 +39,7 @@ class Ball:
 
 
 # global WIDTH
-# global HEIGHT
+# global HEI/GHT
 WIDTH = 500
 HEIGHT = 500
 DIAM_BALLS = 20

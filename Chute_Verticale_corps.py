@@ -1,7 +1,7 @@
 ###############################################################################
 # Date ! 27/03/2020
 # Auteur : SYC
-# Comment : Just some balls in a windows
+# Comment : Balls with gravity
 ###############################################################################
 
 
@@ -34,7 +34,7 @@ class Ball:
     def move_active(self):
         if self.active:
             self.move_ball()
-            self.canvas.after(5, self.move_active)
+            self.canvas.after(40, self.move_active)
 
 
 

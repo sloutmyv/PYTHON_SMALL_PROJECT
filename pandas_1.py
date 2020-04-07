@@ -21,17 +21,71 @@ df['Date'] = pd.to_datetime(df[['Year','Month','Day']], errors = 'coerce')
 df.drop(columns = ["Year","Month","Day"], inplace=True)
 df.sort_values(by=['Date'], inplace=True, ascending=True)
 
-France_df = df[df['Pays'] == "France"]
-France_df = France_df.set_index("Date")
-ax = France_df.plot(y=['Deces', 'Infections','Guerisons'], figsize=(10,5), grid=True, kind='line', title="France")
+#-----------------------------------------------------------------------------#
+# France_df = df[df['Pays'] == "France"]
+# France_df = France_df.set_index("Date")
+# ax = France_df.plot(y=['Deces', 'Infections','Guerisons'], figsize=(10,5), grid=True, kind='line', title="France")
+#
+# Espagne_df = df[df['Pays'] == "Espagne"]
+# Espagne_df = Espagne_df.set_index("Date")
+# Espagne_df.plot(ax = ax, y=['Deces', 'Infections','Guerisons'], figsize=(10,5), grid=True, kind='line', legend=True)
 
-Espagne_df = df[df['Pays'] == "Espagne"]
-Espagne_df = Espagne_df.set_index("Date")
-Espagne_df.plot(ax = ax, y=['Deces', 'Infections','Guerisons'], figsize=(10,5), grid=True, kind='line', legend=True)
+#-----------------------------------------------------------------------------#
+data = "Infections"
+crietere = 100000
+title = data + " > " + str(crietere)
+df_selec = df.loc[df[data] > crietere]
+countries = set(df_selec["Pays"].values.tolist())
 
 
+# print(set(df["Pays"].values.tolist())) #Affichie les valuers unique d'une colonne
+# countries = ["France", "Espagne", "Italie"]
+
+
+graph_df = pd.DataFrame()
+
+for country in countries:
+    pays_df = df.copy()[df["Pays"]==country]
+    pays_df.set_index('Date', inplace=True)
+    pays_df[f"{country}"] = pays_df[data]
+
+    if graph_df.empty:
+        graph_df = pays_df[[f"{country}"]]
+    else:
+        graph_df = graph_df.join(pays_df[f"{country}"])
+
+# graph_df.plot(y=countries, figsize=(10,5), grid=True, kind='line', title=title)
+graph_df.plot(y=countries, figsize=(10,5), grid=True, kind='area', title=title)
 plt.show()
-
-# df_fr_esp = df.loc[df['Pays'].isin(['France','Espagne'])]
-# df_fr_esp.plot(y=['Deces', 'Infections','Guerisons'], figsize=(10,5), grid=True)
+#-----------------------------------------------------------------------------#
+# data = "Deces"
+# crietere = 1000
+# title = data + " > " + str(crietere)
+# df_selec = df.loc[df[data] > crietere]
+# countries = set(df_selec["Pays"].values.tolist())
+#
+# graph_df = pd.DataFrame()
+#
+# for country in countries:
+#     pays_df = df.copy()[df["Pays"]==country]
+#     pays_df.set_index('Date', inplace=True)
+#     pays_df[f"{country}"] = pays_df[data]
+#
+#     if graph_df.empty:
+#         graph_df = pays_df[[f"{country}"]]
+#     else:
+#         graph_df = graph_df.join(pays_df[f"{country}"])
+#
+# graph_df = graph_df.fillna(0)
+# graph_df.loc[:,'Total'] = graph_df.sum(axis=1) #Total sum per row:
+#
+# for col in graph_df.columns:
+#     graph_df[f"{col}_"] = graph_df[col]/graph_df["Total"]
+# for country in countries:
+#     graph_df.drop(columns = country, inplace=True)
+# graph_df.drop(columns = ["Total",'Total_'], inplace=True)
+# graph_df = graph_df.fillna(0)
+#
+# graph_df.plot(figsize=(10,5), grid=True, kind='area', title=title)
+#
 # plt.show()

@@ -5,6 +5,8 @@
 ###############################################################################
 
 import os
+import sys
+sys.path.insert(1, 'C:\\Users\\sclerc\\github\\PYTHON_SMALL_PROJECT\\MODULES_SYC\\') #add specific root to current path
 from syc_modules import read, write
 
 INPUT_ROOT = "C:\\Users\\sclerc\\github\\INPUT_FILES\\"

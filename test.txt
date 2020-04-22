@@ -1,0 +1,16 @@
+téest        sexe preusuel annais  nombre
+636469     2    ÖZLEM   2013       3
+636470     2    ÖZLEM   2014       5
+636471     2    ÖZLEM   2015       3
+636472     2    ÖZLEM   2016       3
+636473     2    ÖZLEM   XXXX      25        sexe preusuel annais  nombre
+636469     2    ÖZLEM   2013       3
+636470     2    ÖZLEM   2014       5
+636471     2    ÖZLEM   2015       3
+636472     2    ÖZLEM   2016       3
+636473     2    ÖZLEM   XXXX      25        sexe preusuel annais  nombre
+636469     2    ÖZLEM   2013       3
+636470     2    ÖZLEM   2014       5
+636471     2    ÖZLEM   2015       3
+636472     2    ÖZLEM   2016       3
+636473     2    ÖZLEM   XXXX      25

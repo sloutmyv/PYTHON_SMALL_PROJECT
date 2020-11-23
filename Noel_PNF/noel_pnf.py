@@ -44,8 +44,8 @@ if __name__ == "__main__":
 
     # Liste des participants de l'année en cours
     liste_participants = ["Adrien","Alexis","Anais","Anne","Bastien","Chloe","Clement",
-    "Colas","Eric","Eva","Guillaume","Kevin","Loris","Marine","Mathilde","Quentin","Romane",
-    "Samy","Tanguy"]
+    "Colas","Eric","Eva","Guillaume","Guimauve","Julie","Kevin","Laure","Loris","Marine","Mathilde","Quentin","Romane",
+    "Samy","Tanguy","Thomas"]
 
     print("Cette année il y a %d participants" %(len(liste_participants)))
 
